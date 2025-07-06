@@ -11,12 +11,20 @@ export default async function handler(req, res) {
   }
 
   try {
-    const action = req.method === 'POST' ? req.body?.action : req.query.action;
+    // Ambil semua parameter dari query (GET) atau body (POST)
+    const params = req.method === 'POST' ? req.body : req.query;
+    const action = params.action;
     if (!action) {
       return res.status(400).json({ error: 'Missing action parameter' });
     }
-    // Ganti URL di bawah dengan URL Web Apps Script kamu
-    const scriptUrl = `https://script.google.com/macros/s/AKfycbwOR7PqwXYJJY-s2jsucRLwTXKPMYGKRoiVYWUjYWd6rNFSPNSL5TuAzJUKzICdtkj-/exec?action=${action}`;
+    // Susun query string dari semua parameter
+    const searchParams = new URLSearchParams();
+    for (const key in params) {
+      if (params[key] !== undefined) {
+        searchParams.append(key, params[key]);
+      }
+    }
+    const scriptUrl = `https://script.google.com/macros/s/AKfycbwOR7PqwXYJJY-s2jsucRLwTXKPMYGKRoiVYWUjYWd6rNFSPNSL5TuAzJUKzICdtkj-/exec?${searchParams.toString()}`;
     const response = await fetch(scriptUrl, {
       method: 'GET',
     });
