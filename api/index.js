@@ -7,7 +7,7 @@ export default async function handler(req, res) {
     }
 
     // Ganti URL di bawah dengan URL Web Apps Script kamu
-    const scriptUrl = `https://script.google.com/macros/s/AKfycbxxxxxxx/exec?action=${action}`;
+    const scriptUrl = `https://script.google.com/macros/s/AKfycbyq5JSyO7LBfCxbNxo97yN9i3MdT8TvHhZaT_NKBm7xJjUH0TSUG4gtqlrqlBoY5qs/exec?action=${action}`;
 
     const response = await fetch(scriptUrl);
     const data = await response.json();
