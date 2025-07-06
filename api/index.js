@@ -4,7 +4,7 @@ export default async function handler(req, res) {
     if (!action) {
       return res.status(400).json({ error: "Missing action parameter" });
     }
-    const scriptUrl = `https://script.google.com/macros/s/AKfycbg.../exec?action=${action}`;
+    const scriptUrl = `https://script.google.com/macros/s/AKfycbyq5JSyO7LBfCxbNxo97yN9i3MdT8TvHhZaT_NKBm7xJjUH0TSUG4gtqlrqlBoY5qs/exec?action=${action}`;
     const response = await fetch(scriptUrl);
     const text = await response.text();
     if (text.trim().startsWith('<')) {
