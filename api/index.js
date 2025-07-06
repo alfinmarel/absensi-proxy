@@ -5,7 +5,7 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: "Missing action parameter" });
     }
     // Ganti URL di bawah dengan URL Web Apps Script kamu
-    const scriptUrl = `https://script.google.com/macros/s/AKfycbyq5JSyO7LBfCxbNxo97yN9i3MdT8TvHhZaT_NKBm7xJjUH0TSUG4gtqlrqlBoY5qs/exec?action=${action}`;
+    const scriptUrl = `https://script.google.com/macros/s/AKfycbwOR7PqwXYJJY-s2jsucRLwTXKPMYGKRoiVYWUjYWd6rNFSPNSL5TuAzJUKzICdtkj-/exec?action=${action}`;
     const response = await fetch(scriptUrl);
     const text = await response.text();
     if (text.trim().startsWith('<')) {
